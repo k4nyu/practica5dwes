@@ -5,7 +5,7 @@ function autoload($clase) {
 }
 
 spl_autoload_register('autoload');
-$id = Leer::get("id");
+$id = Leer::get("idproducto");
 // añadir el producto a la cesta
 session_start();
 if (isset($_SESSION["__cesta"])) {
@@ -14,7 +14,8 @@ if (isset($_SESSION["__cesta"])) {
     header("Location: ../index.php");
     exit();
 }
-$modelo = new ModeloProducto();
+$bd = new BaseDatos();
+$modelo = new ModeloProducto($bd);
 $producto = $modelo->get($id);
 
 if (isset($cesta[$id])) {
@@ -26,4 +27,4 @@ if (isset($cesta[$id])) {
     $_SESSION["__cesta"] = $cesta;
 }
 //
-header("Location: ../index.php");
+header("Location: ../controlador.php");

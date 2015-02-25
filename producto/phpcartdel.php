@@ -5,7 +5,7 @@ function autoload($clase) {
 }
 
 spl_autoload_register('autoload');
-$id = Leer::get("id");
+$id = Leer::get("idproducto");
 // añadir el producto a la cesta
 session_start();
 if (isset($_SESSION["__cesta"])) {
@@ -17,4 +17,4 @@ if (isset($_SESSION["__cesta"])) {
 unset($cesta[$id]);
 
 $_SESSION["__cesta"] = $cesta;
-header("Location: ../index.php");
+header("Location: ../controlador.php");

@@ -1,0 +1,35 @@
+.mas{
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/mas.png);
+    border: none;
+    cursor: pointer;
+}
+
+.menos{
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/menos.png);
+    border: none;
+    cursor: pointer;
+}
+
+.basura{
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    background-image: url(../images/trash.png);
+    border: none;
+    cursor: pointer;
+}
+
+.carrito{
+    width: 20px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    background-image: url(../images/image-sprit.png);
+    background-position-x: -3px;
+    background-position-y: -3px;
+}

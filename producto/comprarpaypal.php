@@ -6,15 +6,18 @@ function autoload($clase) {
 
 spl_autoload_register('autoload');
 
-$modelo = new ModeloProducto();
+$bd= new BaseDatos();
+$modelo = new ModeloProducto($bd);
 $productos = $modelo->getList();
 
 
-$cliente = Leer::post("cliente");
-echo "cliente: " . $cliente;
+$id = Leer::get("id");
+$nombre = Leer::get("nombre");
+$direccion = Leer::get("direccion");
+$total = Leer::get("total");
 
 
-file_put_contents("ventas/venta.txt", $cliente . "\n", FILE_APPEND);
+file_put_contents("ventas/venta.txt", $nombre . "\n" . $direccion . "\n", FILE_APPEND);
 session_start();
 //$cestaSesion = $sesion->getCesta();
 if (isset($_SESSION["__cesta"])) {
@@ -39,8 +42,8 @@ if (isset($_SESSION["__cesta"])) {
             <input type="hidden" name="cmd" value="_xclick">
             <input type="hidden" name="business" value="ironhill7-facilitator@hotmail.com">
             <input type="hidden" name="currency_code" value="EUR">
-            <input type="hidden" name="item_name" value="123">
-            <input type="hidden" name="amount" value="9.99">
+            <input type="hidden" name="item_name" value="<?php echo $id; ?>">
+            <input type="hidden" name="amount" value="<?php echo $total; ?>">
             <input type="hidden" name="return" value="http://fernandopuche.x10.mx/gracias.php">
             <input type="hidden" name="notify_url" value="http://fernandopuche.x10.mx/getpago.php">
             <input type="image" border="0" name="submit"  src="http://www.paypal.com/es_ES/i/btn/btn_buynow_LG.gif" >
