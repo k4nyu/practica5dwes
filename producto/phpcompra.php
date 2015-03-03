@@ -9,7 +9,7 @@ $direccion = Leer::post("direccion");
 $total = Leer::post("total");
 $modeloventa = new ModeloVenta($bd);
 $pago = "no";
-$venta = new Venta(null, null, $pago, $direccion, $nombre, $total);
+$venta = new Venta(null, null, null, $pago, $direccion, $nombre, $total);
 $modeloventa->add($venta);
 $idVenta = $bd->getAutonumerico();
 $modeloDetalle = new ModeloDetalleVenta($bd);
